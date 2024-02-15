@@ -201,7 +201,7 @@ __fi void _vuTestPipes(VURegs * VU) {
 	} while (flushed == true);
 }
 
-static void __fastcall _vuFMACTestStall(VURegs * VU, int reg, int xyzw)
+static void _vuFMACTestStall(VURegs * VU, int reg, int xyzw)
 {
 	u32 i = 0;
 
@@ -312,7 +312,7 @@ __fi void _vuClearFMAC(VURegs* VU)
 	VU->fmaccount++;
 }
 
-static __ri void __fastcall _vuAddFMACStalls(VURegs* VU, _VURegsNum* VUregsn, bool isUpper)
+static __ri void _vuAddFMACStalls(VURegs* VU, _VURegsNum* VUregsn, bool isUpper)
 {
 	int i = VU->fmacwritepos;
 
@@ -337,7 +337,7 @@ static __ri void __fastcall _vuAddFMACStalls(VURegs* VU, _VURegsNum* VUregsn, bo
 	VU->fmac[i].clipflag   = VU->clipflag;
 }
 
-static __ri void __fastcall _vuFDIVAdd(VURegs* VU, int cycles)
+static __ri void _vuFDIVAdd(VURegs* VU, int cycles)
 {
 	VU->fdiv.enable = 1;
 	VU->fdiv.sCycle = VU->cycle;
@@ -346,7 +346,7 @@ static __ri void __fastcall _vuFDIVAdd(VURegs* VU, int cycles)
 	VU->fdiv.statusflag = VU->statusflag;
 }
 
-static __ri void __fastcall _vuEFUAdd(VURegs* VU, int cycles)
+static __ri void _vuEFUAdd(VURegs* VU, int cycles)
 {
 	VU->efu.enable = 1;
 	VU->efu.sCycle = VU->cycle;
@@ -354,7 +354,7 @@ static __ri void __fastcall _vuEFUAdd(VURegs* VU, int cycles)
 	VU->efu.reg.F = VU->p.F;
 }
 
-static __ri void __fastcall _vuIALUAdd(VURegs* VU, _VURegsNum* VUregsn)
+static __ri void _vuIALUAdd(VURegs* VU, _VURegsNum* VUregsn)
 {
 	if (VUregsn->cycles == 0)
 		return;
